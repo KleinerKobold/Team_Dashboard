@@ -1,7 +1,9 @@
-<h1>Team Memebers</h1>
-<h2>{{member.name | uppercase}} Details</h2>
+<div>
+<h1>Team Members</h1>
+<span>{{member.name | uppercase}} Details</span>
 <div><span>id: </span>{{member.id}}</div>
 <div>
-    <label for="name">Hero name: </label>
+    <label for="name">Member name: </label>
     <input id="name" [(ngModel)]="member.name" placeholder="name">
   </div>
+</div>
