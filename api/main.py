@@ -1,23 +1,16 @@
 from typing import Optional
 from fastapi import FastAPI
-from pydantic import BaseModel, Field
 
 import redis
 import json
+from models.team_member import Team_Member
 
 app = FastAPI()
 r = redis.StrictRedis(host='localhost', port=6379, db=0, password="sOmE_sEcUrE_pAsS", socket_timeout=None, connection_pool=None, charset='utf-8', errors='strict', unix_socket_path=None)
 
-class Team_Member(BaseModel):
-    id: int
-    name: str = Field(
-        None, title="Name of the team member", max_length=300
-    )
-
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
-
 
 @app.get("/teammember/{item_id}")
 def read_teammember(item_id: int):
