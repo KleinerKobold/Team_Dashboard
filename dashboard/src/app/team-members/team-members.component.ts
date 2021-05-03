@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamMember } from '../team-member';
-import { MEMBERS } from './mock-team-members'
+import { MEMBERS } from './mock-team-members';
+import { TeamMemberService} from '../team-member.service';
 @Component({
   selector: 'app-team-members',
   templateUrl: './team-members.component.html',
@@ -8,16 +9,21 @@ import { MEMBERS } from './mock-team-members'
 })
 export class TeamMembersComponent implements OnInit {
 
-  TeamMember =MEMBERS;
+  teamMembers: TeamMember[] = [];
   selectedMember?: TeamMember;
   
-  constructor() { }
+  constructor(private teamMemberService: TeamMemberService) { }
 
   ngOnInit() {
+    this.getTeamMembers();
   }
 
   onSelect(member: TeamMember): void {
     this.selectedMember = member;
+  }
+  getTeamMembers(): void {
+    this.teamMemberService.getTeamMembers()
+        .subscribe(members => this.teamMembers = members);
   }
 
 }

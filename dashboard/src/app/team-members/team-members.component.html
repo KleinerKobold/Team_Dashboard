@@ -1,6 +1,6 @@
 <h2>Team Members</h2>
 <ul class="TeamMember">
-  <li *ngFor="let member of TeamMember"
+  <li *ngFor="let member of teamMembers"
     [class.selected]="member === selectedMember"
     (click)="onSelect(member)">
     <span class="badge">{{member.id}}</span> {{member.name}}
