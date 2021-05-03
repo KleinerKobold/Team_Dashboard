@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamMember } from '../team-member';
-
+import { MEMBERS } from './mock-team-members'
 @Component({
   selector: 'app-team-members',
   templateUrl: './team-members.component.html',
@@ -8,14 +8,16 @@ import { TeamMember } from '../team-member';
 })
 export class TeamMembersComponent implements OnInit {
 
-  member: TeamMember = {
-    id: 1,
-    name: 'Oliver'
-  };
-
+  TeamMember =MEMBERS;
+  selectedMember?: TeamMember;
+  
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  onSelect(member: TeamMember): void {
+    this.selectedMember = member;
   }
 
 }
